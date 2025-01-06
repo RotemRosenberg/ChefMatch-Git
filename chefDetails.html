@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chef Details</title>
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="chef-details-container" class="container"></div>
+
+    <script>
+      // Function to render chef details from localStorage
+      function renderChefDetails() {
+        // Get the chef data from localStorage
+        const chefData = localStorage.getItem("selectedChef");
+
+        if (!chefData) {
+          // If no data found, show an error message
+          document.getElementById("chef-details-container").innerHTML =
+            "<p>Error: No chef data found!</p>";
+          return;
+        }
+
+        // Parse the chef data
+        const chef = JSON.parse(chefData);
+
+        // Render the chef details
+        const container = document.getElementById("chef-details-container");
+        container.innerHTML = `
+        <div class="chef-details">
+          <img src="${chef.PicURL}" alt="${chef.Name}" style="width:100%; max-height:300px; object-fit:cover;">
+          <h1>${chef.Name}</h1>
+          <p><strong>Category:</strong> ${chef.Category}</p>
+          <p><strong>Description:</strong> ${chef.Description}</p>
+          <p><strong>Menu:</strong> ${chef.Menu}</p>
+          <p><strong>Email:</strong> <a href="mailto:${chef.Email}">${chef.Email}</a></p>
+        </div>`;
+      }
+
+      // Load the chef details on page load
+      document.addEventListener("DOMContentLoaded", renderChefDetails);
+    </script>
+  </body>
+</html>

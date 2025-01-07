@@ -35,22 +35,15 @@ function renderChefs(chefs) {
               <span>${chef.Category}</span>
             </div>
             <div class="team-social">
-              <a class="btn btn-square btn-light rounded-circle" href="#"
-                ><i class="fab fa-facebook-f"></i
-              ></a>
-              <a class="btn btn-square btn-light rounded-circle" href="#"
-                ><i class="fab fa-twitter"></i
-              ></a>
-              <a class="btn btn-square btn-light rounded-circle" href="#"
-                ><i class="fab fa-instagram"></i
-              ></a>
-            </div>
-            <div>
-              <p>${chef.Description}</p>
-              <p><strong>Menu:</strong> ${chef.Menu}</p>
-              <p><strong>Email:</strong> <a href="mailto:${chef.Email}">${
-      chef.Email
-    }</a></p>
+              <a class="btn btn-square btn-light rounded-circle" href="#">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a class="btn btn-square btn-light rounded-circle" href="#">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a class="btn btn-square btn-light rounded-circle" href="#">
+                <i class="fab fa-instagram"></i>
+              </a>
             </div>
           </div>
         </div>

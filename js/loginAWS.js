@@ -8,27 +8,26 @@ const cognitoConfig = {
   redirectUri: 'http://localhost:5500/index.html'
 };
 
-// Check for authorization code in URL when page loads
-window.onload = function () {
+$(document).ready(function() {
   const idToken = localStorage.getItem('id_token');
-  if(idToken){
+  console.log('On Load: ID Token:', idToken);
+  if (idToken) {
     displayUserInfo(idToken);
     const currentUrl = window.location.origin + window.location.pathname; // משאיר רק את ה-URL הבסיסי
     window.history.replaceState({}, document.title, currentUrl); // מחליף את ה-URL בלי לרענן את הדף
+  } else {
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+    if (code) {
+      exchangeCodeForTokens(code);
+      const currentUrl = window.location.origin + window.location.pathname; // משאיר רק את ה-URL הבסיסי
+      window.history.replaceState({}, document.title, currentUrl); // מחליף את ה-URL בלי לרענן את הדף
+    } else {
+      updateAuthUI(null);
+    }
   }
-else{
-  const urlParams = new URLSearchParams(window.location.search);
-  const code = urlParams.get('code');
-  if (code) {
-    exchangeCodeForTokens(code);
-    const currentUrl = window.location.origin + window.location.pathname; // משאיר רק את ה-URL הבסיסי
-    window.history.replaceState({}, document.title, currentUrl); // מחליף את ה-URL בלי לרענן את הדף
-  }
-  else {
-    updateAuthUI(null);
-}
-}
-};
+});
+
 
 
 function signIn() {
@@ -82,6 +81,7 @@ async function exchangeCodeForTokens(code) {
 function displayUserInfo(idToken) {
   try {
       const payload = JSON.parse(atob(idToken.split('.')[1]));
+      console.log('User Info:', payload);
       const username = payload['cognito:username'] || 'User';
       updateAuthUI(username);
   } catch (error) {

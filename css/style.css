@@ -208,7 +208,7 @@ h6,
 
 .page-header {
     margin-bottom: 6rem;
-    background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(../img/carousel-1.jpg) center center no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(https://amzn-s3-images.s3.us-east-1.amazonaws.com/img/carousel-1.jpg) center center no-repeat;
     background-size: cover;
 }
 

@@ -10,14 +10,26 @@ const cognitoConfig = {
 
 // Check for authorization code in URL when page loads
 window.onload = function () {
+  const idToken = localStorage.getItem('id_token');
+  if(idToken){
+    displayUserInfo(idToken);
+    const currentUrl = window.location.origin + window.location.pathname; // משאיר רק את ה-URL הבסיסי
+    window.history.replaceState({}, document.title, currentUrl); // מחליף את ה-URL בלי לרענן את הדף
+  }
+else{
   const urlParams = new URLSearchParams(window.location.search);
   const code = urlParams.get('code');
   if (code) {
-      exchangeCodeForTokens(code);
-  } else {
-      updateAuthUI(null);
+    exchangeCodeForTokens(code);
+    const currentUrl = window.location.origin + window.location.pathname; // משאיר רק את ה-URL הבסיסי
+    window.history.replaceState({}, document.title, currentUrl); // מחליף את ה-URL בלי לרענן את הדף
   }
+  else {
+    updateAuthUI(null);
+}
+}
 };
+
 
 function signIn() {
   const url = `https://${cognitoConfig.Domain}.auth.${cognitoConfig.Region}.amazoncognito.com/login?client_id=${cognitoConfig.ClientId}&response_type=code&scope=email+openid+phone&redirect_uri=${cognitoConfig.redirectUri}`;

@@ -83,16 +83,20 @@ function displayUserInfo(idToken) {
       const payload = JSON.parse(atob(idToken.split('.')[1]));
       console.log('User Info:', payload);
       const username = payload['cognito:username'] || 'User';
-      updateAuthUI(username);
+      const userGroup = payload["cognito:groups"]
+      ? payload["cognito:groups"][0]
+      : null;
+      updateAuthUI(username,userGroup);
   } catch (error) {
       console.error('Error displaying user info:', error);
       alert('Error displaying user information');
   }
 }
 
-function updateAuthUI(username) {
+function updateAuthUI(username,userGroup) {
   const userGreeting = document.getElementById('userGreeting');
   const authButton = document.getElementById('authButton');
+  const adminPage = document.getElementById('adminCheck');
 
   if (username) {
       userGreeting.textContent = `Hello, ${username}`;
@@ -101,6 +105,12 @@ function updateAuthUI(username) {
       authButton.onclick = signOut;
       authButton.classList.remove('btn-primary');
       authButton.classList.add('btn-danger');
+      // Admin-specific logic
+      if (userGroup=='Admin') {
+        adminPage.classList.remove('d-none'); // Show the Admin Page link
+    } else {
+        adminPage.classList.add('d-none'); // Hide the Admin Page link
+    }
   } else {
       userGreeting.textContent = '';
       userGreeting.classList.add('d-none');
@@ -108,7 +118,8 @@ function updateAuthUI(username) {
       authButton.onclick = signIn;
       authButton.classList.remove('btn-danger');
       authButton.classList.add('btn-primary');
-  }
+      adminPage.classList.add('d-none'); // Hide the Admin Page link
+    }
 
   document.getElementById('authContainer').classList.remove('d-none');
 }

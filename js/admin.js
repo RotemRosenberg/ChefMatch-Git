@@ -61,7 +61,7 @@ function renderRequests(requests) {
     approveButton.onclick = () => handleAction(request.Email,"Approved"); // Attach event handler
 
     const denyButton = document.createElement("button");
-    denyButton.textContent = "Rejecte";
+    denyButton.textContent = "Reject";
     denyButton.className = "btn btn-danger btn-sm"; // Add Bootstrap classes for styling
     denyButton.onclick = () => handleAction(request.Email,"Rejected"); // Attach event handler
 
@@ -109,6 +109,7 @@ fetch(apiUrl, {
     // Handle the success response
     alert("Request processed successfully!");
     console.log(data);
+    window.location.reload();
 })
 .catch(error => {
     // Handle errors

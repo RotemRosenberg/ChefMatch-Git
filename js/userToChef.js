@@ -50,7 +50,7 @@ document
           if (statusCode === "1") {
             alert("Your request is pending approval.");
           } else if (statusCode === "2") {
-            alert("Your previous request was denied.");
+            alert("Your previous request was rejected.");
           } else {
             sendRequest(userEmail);
           }

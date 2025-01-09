@@ -5,7 +5,7 @@ $(document).ready(function() {
     const email = JSON.parse(localStorage.getItem("selectedChef"));
     console.log("Email from localStorage:", email);
     fetchChefDetails(email);
-  });
+});
   
 
 // פונקציה לשליחת בקשת POST ל-API
@@ -83,3 +83,6 @@ async function fetchChefDetails(email) {
         return null;
     }
 }
+
+
+

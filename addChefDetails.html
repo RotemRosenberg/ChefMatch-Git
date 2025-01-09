@@ -180,29 +180,52 @@
               </div>
               <div class="mb-3">
                 <label for="chef-profile-pic" class="form-label">Profile Picture</label>
-                <input
-                  type="file"
-                  class="form-control"
-                  id="chef-profile-pic"
-                  accept="image/*"
-                  required
-                />
+                <div class="input-group">
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="chef-profile-pic"
+                    accept="image/*"
+                  />
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    id="upload-profile-pic-btn"
+                    onclick="uploadProfilePic()"
+                  >
+                    Upload Picture
+                  </button>
+                </div>
+                <small id="profile-pic-url" class="form-text text-muted">No file uploaded.</small>
               </div>
+              
               <div class="mb-3">
                 <label for="chef-gallery" class="form-label">Dish Images</label>
-                <input
-                  type="file"
-                  class="form-control"
-                  id="chef-gallery"
-                  accept="image/*"
-                  multiple
-                />
+                <div class="input-group">
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="chef-gallery"
+                    accept="image/*"
+                    multiple
+                  />
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    id="upload-gallery-btn"
+                    onclick="uploadGalleryImages()"
+                  >
+                    Upload Images
+                  </button>
+                </div>
+                <small id="gallery-urls" class="form-text text-muted">No files uploaded.</small>
               </div>
+              
               <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary w-35">
-                  Submit Profile
+                <button type="button" class="btn btn-success w-50" id="create-profile-btn" onclick="createChefProfile()" disabled>
+                  Create Profile
                 </button>
-              </div>
+              </div>              
             </form>
           </div>
         </div>
@@ -250,8 +273,10 @@
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/counterup/counterup.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script src="js/loginAWS.js"></script>
+    <script src="js/addChefDetails.js"></script>
   </body>
 </html>

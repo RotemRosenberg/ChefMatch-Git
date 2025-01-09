@@ -22,13 +22,13 @@ async function fetchChefs() {
 function renderChefs(chefs) {
   const container = document.getElementById("chefs-container");
   container.innerHTML = ""; // Clear existing content
-
+console.log(chefs);
   chefs.forEach((chef) => {
     const chefCard = `
       <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
         <div class="team-item text-center rounded overflow-hidden" 
              onclick='viewChefDetails(${JSON.stringify(chef)})'>
-          <img class="img-fluid" src="${chef.PicURL}" alt="${chef.Name}" />
+          <img class="img-fluid" src="${chef.ProfilePic}" alt="${chef.Name}" />
           <div class="team-text">
             <div class="team-title">
               <h5>${chef.Name}</h5>
@@ -54,7 +54,7 @@ function renderChefs(chefs) {
 
 function viewChefDetails(chef) {
   // Save the chef object to localStorage
-  localStorage.setItem("selectedChef", JSON.stringify(chef));
+  localStorage.setItem("selectedChef", JSON.stringify(chef.Email));
 
   // Navigate to the details page
   window.location.href = "chefDetails.html";

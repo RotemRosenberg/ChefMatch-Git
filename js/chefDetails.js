@@ -1,70 +1,85 @@
-// Retrieve chef data from local storage
-const chef = JSON.parse(localStorage.getItem("selectedChef"));
-const idToken = localStorage.getItem("id_token"); // Make sure the token is saved in localStorage
-const payload = JSON.parse(atob(idToken.split(".")[1]));
-const username = payload["cognito:username"] || "User";
+// כתובת ה-API Gateway
+const API_URL = "https://kmr57na7l7.execute-api.us-east-1.amazonaws.com/prod/chef-details";
 
-if (chef) {
-  // Update Chef Details Section
-  document.getElementById("chef-name").textContent = chef.Name;
-  document.getElementById("chef-category").textContent = chef.Category;
-  document.getElementById("chef-description").textContent = chef.Description;
-  const chefImage = document.getElementById("chef-image");
-  chefImage.src = chef.PicURL;
-  chefImage.alt = chef.Name;
-
-  // Update Menu Section
-  const menuItems = chef.Menu.split(","); // Assuming menu items are stored as a comma-separated string
-  const menuSection = document.querySelectorAll(".menu-item");
-  menuItems.forEach((menuItem, index) => {
-    if (menuSection[index]) {
-      menuSection[index].innerHTML = `<h5>${menuItem.trim()}</h5>`;
-    }
+$(document).ready(function() {
+    const email = JSON.parse(localStorage.getItem("selectedChef"));
+    console.log("Email from localStorage:", email);
+    fetchChefDetails(email);
   });
+  
 
-  // Set up Contact Form
-  const sendEmailButton = document.getElementById("send-email-button");
-  sendEmailButton.addEventListener("click", async () => {
-    const message = document.getElementById("contact-message").value.trim();
-    if (message) {
-      // API Gateway endpoint
-      const apiEndpoint =
-        "https://uqewoozqal.execute-api.us-east-1.amazonaws.com/test/sendEmail";
-
-      // Construct the payload
-      const payload = {
-        chefEmail: "eladaharon065@gmail.com", // Chef's email
-        userName: username, // User's name
-        message: message, // Message from the user
-      };
-
-      try {
-        // Send POST request to API Gateway
-        const response = await fetch(apiEndpoint, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
+// פונקציה לשליחת בקשת POST ל-API
+async function fetchChefDetails(email) {
+    try {
+        const response = await fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ email: email }) // המייל של השף
         });
 
-        if (response.ok) {
-          const responseData = await response.json();
-          alert("Message sent successfully!");
-        } else {
-          const errorData = await response.json();
-          console.error("Error sending email:", errorData);
-          alert("Failed to send the message. Please try again.");
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
-      } catch (error) {
-        console.error("Error:", error);
-        alert("An unexpected error occurred. Please try again later.");
-      }
-    } else {
-      alert("Please write a message before sending.");
+
+        const rawData = await response.json();
+        const data = JSON.parse(rawData.body); // ניתוח ה-body למידע קריא    
+        console.log("Chef Details:", data);
+
+        // עדכון ה-HTML עם המידע
+        document.getElementById("chef-name").textContent = data.Name;
+        document.getElementById("chef-category").textContent = data.Category;
+        document.getElementById("chef-price").textContent = `Price: $${data.Price} Per Person`;
+        document.getElementById("chef-description").textContent = data.Description;
+        document.getElementById("chef-image").src = data.ProfilePic;
+
+   // עדכון גלריה
+   const galleryCarousel = document.querySelector("#chefGalleryCarousel .carousel-inner");
+   galleryCarousel.innerHTML = ""; // ניקוי תמונות ישנות
+   
+   if (Array.isArray(data.Gallery) && data.Gallery.length > 0) {
+       // נחלק את התמונות לקבוצות של 3
+       for (let i = 0; i < data.Gallery.length; i += 3) {
+           // יצירת carousel-item
+           const carouselItem = document.createElement("div");
+           carouselItem.className = "carousel-item";
+   
+           // הסמן את הפריט הראשון כ-active
+           if (i === 0) {
+               carouselItem.classList.add("active");
+           }
+   
+           // יצירת שורה להכיל את התמונות
+           const rowDiv = document.createElement("div");
+           rowDiv.className = "row";
+   
+           // הוספת 3 תמונות לשורה
+           data.Gallery.slice(i, i + 3).forEach((imageUrl) => {
+               const colDiv = document.createElement("div");
+               colDiv.className = "col-md-4"; // עמודה ברוחב 4 (3 עמודות לשורה)
+   
+               const img = document.createElement("img");
+               img.src = imageUrl;
+               img.alt = "Dish Image";
+               img.className = "img-fluid rounded shadow-sm";
+   
+               colDiv.appendChild(img);
+               rowDiv.appendChild(colDiv);
+           });
+   
+           // הוספת השורה ל-carousel-item
+           carouselItem.appendChild(rowDiv);
+   
+           // הוספת carousel-item ל-carousel-inner
+           galleryCarousel.appendChild(carouselItem);
+       }
+   } else {
+       galleryCarousel.innerHTML = "<p class='text-center'>No dishes available</p>";
+   }
+        return data;
+    } catch (error) {
+        console.error("Error fetching chef details:", error);
+        return null;
     }
-  });
-} else {
-  // Redirect to the team page if no chef data is found
-  window.location.href = "team.html";
 }

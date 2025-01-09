@@ -63,15 +63,12 @@ async function searchChefs() {
 function renderChefs(chefs) {
   const container = document.getElementById("chefs-container");
   container.innerHTML = ""; // Clear existing content
-  console.log("Rendering chefs:", chefs);
+console.log(chefs);
   chefs.forEach((chef) => {
     const chefCard = `
       <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
         <div class="team-item text-center rounded overflow-hidden" 
-             onclick='viewChefDetails(${JSON.stringify(chef).replace(
-               /'/g,
-               "\\'"
-             )})'>
+             onclick='viewChefDetails(${JSON.stringify(chef)})'>
           <img class="img-fluid" src="${chef.ProfilePic}" alt="${chef.Name}" />
           <div class="team-text">
             <div class="team-title">
@@ -87,7 +84,9 @@ function renderChefs(chefs) {
 
 // Function to handle viewing chef details
 function viewChefDetails(chef) {
-  localStorage.setItem("selectedChef", JSON.stringify(chef));
+  // Save the chef object to localStorage
+  localStorage.setItem("selectedChef", JSON.stringify(chef.Email));
+  // Navigate to the details page
   window.location.href = "chefDetails.html";
 }
 

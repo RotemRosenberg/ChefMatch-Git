@@ -10,6 +10,7 @@
   font-size: 2rem;
   font-weight: bold;
   color: var(--primary); /* Primary color for the chef's name */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 #chef-category {
@@ -26,7 +27,7 @@
 
 .chef-img {
   border-radius: 10px;
-  max-width: 250px;
+  max-width: 350px;
   border: 3px solid var(--primary); /* Primary border around the image */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -94,4 +95,10 @@
 
 h3.text-center.mb-4 {
   color: var(--primary); /* Primary color for heading */
+}
+.carousel-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
 }

@@ -25,3 +25,50 @@
   justify-content: center;
   gap: 10px;
 }
+ #searchChefs {
+        background-color: #f8f9fa;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      #searchChefs h2 {
+        font-size: 24px;
+        color: #343a40;
+        margin-bottom: 20px;
+      }
+
+      #searchContainer {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      #searchType,
+      #searchInput,
+      #searchButton {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+      }
+
+      #searchButton {
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        border: none;
+        transition: background-color 0.3s;
+      }
+
+      #searchButton:hover {
+        background-color: #0056b3;
+      }
+
+      #searchInput {
+        flex: 1;
+        min-width: 200px;
+      }

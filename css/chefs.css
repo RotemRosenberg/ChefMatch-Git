@@ -6,11 +6,7 @@
 /* Style the search section with an updated background */
 #searchChefs {
   position: relative;
-  background: linear-gradient(
-    135deg,
-    #e3f2fd,
-    #f1f8ff
-  ); /* Updated to softer blue tones */
+  background: linear-gradient(135deg, #e3f2fd, #f1f8ff); /* Softer blue tones */
   border: 1px solid #007bff; /* Border for emphasis */
   padding: 40px 20px;
   border-radius: 20px;
@@ -82,8 +78,8 @@
   border: none;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
   flex: 1;
-  min-width: 350px; /* Increased length */
-  max-width: 500px; /* Restrict maximum width */
+  min-width: 350px;
+  max-width: 500px;
   transition: all 0.3s ease;
 }
 
@@ -114,11 +110,60 @@
   border-radius: 50%;
   background: #007bff;
   color: white;
-  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
 }
 
 #startButton:hover {
   background: #0056b3;
   box-shadow: 0 6px 15px rgba(0, 123, 255, 0.5);
+}
+
+/* Style for chef image with hover effect */
+.team-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top; /* Focus on the top of the image */
+  transition: all 0.3s ease; /* Smooth animation */
+}
+
+/* Expand image to cover the full box on hover */
+.team-item:hover img {
+  transform: scale(1.2); /* Increased zoom effect */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4); /* Stronger shadow for emphasis */
+}
+
+/* Style for the entire chef div */
+.team-item {
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  height: 300px; /* Consistent height for cards */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-item:hover {
+  transform: translateY(-10px); /* Lift the card */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Hide description text when hovering */
+.team-item .team-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+.team-item:hover .team-text {
+  opacity: 0; /* Hide description */
+  pointer-events: none;
 }

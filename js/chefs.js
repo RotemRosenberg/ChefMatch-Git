@@ -1,7 +1,7 @@
 // Function to fetch all chefs from the API
 async function fetchChefs() {
   const apiURL =
-    "https://uqewoozqal.execute-api.us-east-1.amazonaws.com/test/chefs";
+    "https://uqewoozqal.execute-api.us-east-1.amazonaws.com/dev/chefs";
 
   try {
     const response = await fetch(apiURL);
@@ -31,7 +31,7 @@ async function searchChefs() {
     return;
   }
 
-  const apiURL = `https://uqewoozqal.execute-api.us-east-1.amazonaws.com/test/chefs/searchChefs?type=${searchType}&value=${encodeURIComponent(
+  const apiURL = `https://uqewoozqal.execute-api.us-east-1.amazonaws.com/dev/chefs/searchChefs?type=${searchType}&value=${encodeURIComponent(
     searchInput
   )}`;
 
@@ -63,7 +63,7 @@ async function searchChefs() {
 function renderChefs(chefs) {
   const container = document.getElementById("chefs-container");
   container.innerHTML = ""; // Clear existing content
-console.log(chefs);
+  console.log(chefs);
   chefs.forEach((chef) => {
     const chefCard = `
       <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -102,3 +102,53 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 // Attach search button click event
 document.getElementById("searchButton").addEventListener("click", searchChefs);
+
+//------------------------------ handle voice to text --------------------------------------
+function VoiceToText() {
+  const startButton = document.getElementById("startButton");
+  const searchInput = document.getElementById("searchInput");
+
+  // Check if SpeechRecognition API is available
+  const recognition = new (window.SpeechRecognition ||
+    window.webkitSpeechRecognition ||
+    window.mozSpeechRecognition ||
+    window.msSpeechRecognition)();
+
+  if (!recognition) {
+    alert("Speech recognition is not supported in your browser.");
+    return;
+  }
+
+  recognition.lang = "en-US"; // Set the language
+
+  // Update the microphone icon when recognition starts
+  recognition.onstart = () => {
+    startButton.innerHTML = '<i class="fas fa-microphone-alt"></i>';
+  };
+
+  // Handle speech recognition results
+  recognition.onresult = (event) => {
+    const transcript = event.results[0][0].transcript;
+    searchInput.value = transcript; // Update the search input field with the recognized text
+    console.log("Recognized text:", transcript);
+  };
+
+  // Reset the microphone icon when recognition ends
+  recognition.onend = () => {
+    startButton.innerHTML = '<i class="fas fa-microphone"></i>';
+  };
+
+  // Handle errors
+  recognition.onerror = (event) => {
+    console.error("Speech Recognition Error:", event.error);
+    alert("Speech recognition error. Please try again.");
+  };
+
+  // Start speech recognition when the button is clicked
+  startButton.addEventListener("click", () => {
+    recognition.start();
+  });
+}
+
+// Initialize VoiceToText
+document.addEventListener("DOMContentLoaded", VoiceToText);

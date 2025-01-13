@@ -66,5 +66,5 @@ if (chef) {
   });
 } else {
   // Redirect to the team page if no chef data is found
-  window.location.href = "team.html";
+  window.location.href = "chefs.html";
 }

@@ -7,9 +7,6 @@
     <meta content="" name="keywords" />
     <meta content="" name="description" />
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon" />
-
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -70,9 +67,8 @@
         <div class="navbar-nav mx-auto p-4 p-lg-0" style="font-size: 18px">
           <a href="index.html" class="nav-item nav-link">Home</a>
           <a href="chefs.html" class="nav-item nav-link">Chefs</a>
-          <a href="admin.html" id="adminCheck" class="nav-item nav-link"
-            >Admin Page</a
-          >
+          <a href="admin.html" id="adminCheck" class="nav-item nav-link">Admin Page</a>
+          <a id="chefCheck" href="addChefDetails.html" class="nav-item nav-link">Create Chef</a>
         </div>
         <div id="authContainer" class="d-none d-lg-flex">
           <div
@@ -132,22 +128,35 @@
     <div class="container-xxl py-6 mb-5">
       <div class="container">
         <h2 class="mb-4 text-center">Chef's Dishes</h2>
-        <div id="chefGalleryCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div
+          id="chefGalleryCarousel"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
           <div class="carousel-inner">
             <!-- התמונות יתווספו כאן דרך JavaScript -->
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#chefGalleryCarousel" data-bs-slide="prev">
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#chefGalleryCarousel"
+            data-bs-slide="prev"
+          >
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#chefGalleryCarousel" data-bs-slide="next">
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#chefGalleryCarousel"
+            data-bs-slide="next"
+          >
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
         </div>
       </div>
     </div>
-    
 
     <!-- Chef Booking Form -->
     <div class="container-xxl py-6">
@@ -155,7 +164,7 @@
         <div class="row">
           <h2 class="mb-4 text-center">Book This Chef</h2>
           <div class="col-lg-8 mx-auto">
-            <form>
+            <form id="email-form">
               <div class="mb-3">
                 <label for="full-name" class="form-label">Full Name</label>
                 <input
@@ -187,7 +196,7 @@
                 ></textarea>
               </div>
               <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary w-35">
+                <button id="send-email-button" class="btn btn-primary w-35">
                   Submit Request
                 </button>
               </div>
@@ -196,6 +205,7 @@
         </div>
       </div>
     </div>
+
     <!-- Chef Details End -->
 
     <!-- Copyright Start -->

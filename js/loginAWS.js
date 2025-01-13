@@ -97,6 +97,7 @@ function updateAuthUI(username,userGroup) {
   const userGreeting = document.getElementById('userGreeting');
   const authButton = document.getElementById('authButton');
   const adminPage = document.getElementById('adminCheck');
+  const createChef = document.getElementById('chefCheck');
 
   if (username) {
       userGreeting.textContent = `Hello, ${username}`;
@@ -111,6 +112,11 @@ function updateAuthUI(username,userGroup) {
     } else {
         adminPage.classList.add('d-none'); // Hide the Admin Page link
     }
+    if (userGroup=='ChefUser') {
+      createChef.classList.remove('d-none'); // Show the Admin Page link
+  } else {
+    createChef.classList.add('d-none'); // Hide the Admin Page link
+  }
   } else {
       userGreeting.textContent = '';
       userGreeting.classList.add('d-none');
@@ -119,6 +125,7 @@ function updateAuthUI(username,userGroup) {
       authButton.classList.remove('btn-danger');
       authButton.classList.add('btn-primary');
       adminPage.classList.add('d-none'); // Hide the Admin Page link
+      createChef.classList.add('d-none'); // Hide the Admin Page link
     }
 
   document.getElementById('authContainer').classList.remove('d-none');

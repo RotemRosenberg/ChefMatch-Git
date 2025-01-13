@@ -6,8 +6,8 @@
 /* Style the search section with an updated background */
 #searchChefs {
   position: relative;
-  background: linear-gradient(135deg, #e3f2fd, #f1f8ff); /* Softer blue tones */
-  border: 1px solid #007bff; /* Border for emphasis */
+  background: linear-gradient(135deg, #EAA636, #ffffff);
+  border: 1px solid #EAA636;
   padding: 40px 20px;
   border-radius: 20px;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
@@ -50,7 +50,7 @@
   font-size: 16px;
   border: none;
   border-radius: 10px;
-  background: linear-gradient(135deg, #ffffff, #e6f0ff);
+  background: linear-gradient(135deg, #ffffff, #e4e58a);
   color: #212529;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
@@ -60,14 +60,14 @@
 }
 
 #searchType:hover {
-  background: linear-gradient(135deg, #e6f0ff, #cce0ff);
+  background: linear-gradient(135deg, #e6f0ff, #e4e58a);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 #searchType:focus {
   outline: none;
-  border: 1px solid #007bff;
-  box-shadow: 0 0 6px rgba(0, 123, 255, 0.5);
+  border: 1px solid #EAA636;
+  box-shadow: 0 0 6px rgba(177, 150, 31, 0.5);
 }
 
 /* Input field styling */
@@ -84,8 +84,8 @@
 }
 
 #searchInput:focus {
-  border: 1px solid #007bff;
-  box-shadow: 0 0 6px rgba(0, 123, 255, 0.5);
+  border: 1px solid #EAA636;
+  box-shadow: 0 0 6px rgba(255, 238, 0, 0.5);
   outline: none;
 }
 
@@ -94,29 +94,29 @@
   font-size: 16px;
   padding: 12px 25px;
   border-radius: 30px;
-  background: linear-gradient(135deg, #007bff, #0056b3);
-  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+  background: linear-gradient(135deg, #EAA636, #e9bd74);
+  box-shadow: 0 4px 10px rgba(255, 230, 0, 0.3);
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 #searchButton:hover {
-  background: linear-gradient(135deg, #0056b3, #003f8a);
-  box-shadow: 0 6px 15px rgba(0, 123, 255, 0.5);
+  background: linear-gradient(135deg, #EAA636, #e9bd74);
+  box-shadow: 0 6px 15px rgba(255, 217, 0, 0.5);
 }
 
 #startButton {
   padding: 12px 15px;
   font-size: 18px;
   border-radius: 50%;
-  background: #007bff;
+  background: #EAA636;
   color: white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 10px rgba(255, 251, 1, 0.3);
   transition: all 0.3s ease;
 }
 
 #startButton:hover {
-  background: #0056b3;
-  box-shadow: 0 6px 15px rgba(0, 123, 255, 0.5);
+  background: #EAA636;
+  box-shadow: 0 6px 15px rgba(253, 249, 0, 0.5);
 }
 
 /* Style for chef image with hover effect */

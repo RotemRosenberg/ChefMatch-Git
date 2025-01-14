@@ -1,6 +1,6 @@
 // API Gateway URLs
 const API_URL =
-  "https://x0al7zm0lg.execute-api.us-east-1.amazonaws.com/prod/chefDetails";
+  "https://uqewoozqal.execute-api.us-east-1.amazonaws.com/dev/chef-profile";
 const SEND_EMAIL_API_URL =
   "https://4qzmr89vv4.execute-api.us-east-1.amazonaws.com/prod/sendEmail";
 
@@ -80,11 +80,13 @@ $(document).ready(function () {
 // Function to fetch chef details
 async function fetchChefDetails(email) {
   try {
+    console.log("Fetching chef details for email:", email);
     // Send the email through query parameters
     const response = await fetch(
       `${API_URL}?email=${encodeURIComponent(email)}`,
+
       {
-        method: "GET", // Change to GET as we are using query parameters
+        method: "GET", 
         headers: {
           "Content-Type": "application/json",
         },

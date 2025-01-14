@@ -1,15 +1,15 @@
 // הגדרות AWS
  AWS.config.update({
-  region: "us-east-1", // עדכן את האזור שלך
-  accessKeyId: "ASIA3JTXKMHA43TBLFT2", // המפתח שסיפקת
-  secretAccessKey: "tJh9efu3jUfZlAi7I1kDoo3G2tq3t1vVncKpLD8j", // המפתח הסודי
+  region: "us-east-1", 
+  accessKeyId: "ASIA3JTXKMHA43TBLFT2", 
+  secretAccessKey: "tJh9efu3jUfZlAi7I1kDoo3G2tq3t1vVncKpLD8j",
   sessionToken: "IQoJb3JpZ2luX2VjEAQaCXVzLXdlc3QtMiJIMEYCIQDM6S/KZaNEA/28P26FvRnH3hyLMx8W28TK/uknBBTNnwIhANs1ff69sXmLWsHKq3C7zA651ybox1P9bVjl+f0TRYd8KrICCO3//////////wEQARoMNzc2NTY1NTgwMjI1IgyTc8QqLiaLhqDKFX8qhgJWLjIuWzTJpXqV77XEhNlwa2RSJS149YaLhVGjfHXSpevRiuP28jRLtcbA6SIalhmaScUr9zYYOArXS7nWjaWzXokh2DP0rpTI3FR1mTIqJnY7VyJszs4qnkOeXB/1Nc+5VY3a5/BphUobwIOyBfCQ3SrCAEVldX2IyH3wmb1okF3dI8sNzVQd0v5iAUwh/53xO61jxfBx5+B6RTdmNlj3OUnpyg/ruOaEhkK9bLFNDq+LzIquWqRjqtqu6hDV9k7lip6+eT1GNE5+TrXIKv1iE5xVnQTYprmaFuhynJOqsrEF50oVsPzze63dxmwNgvcDk8wYgg+phPu03rm0dCbXFOw3EvXJMO2HlLwGOpwBhbbZR9tM5ro4OfNTqSmddINs9FSxUyUfDyPSoCdxIcJV1ql1BTibRa+QMqohtQiXKJpjHzXhrgedJYxbez5gbG7GiuEIoozMwqod0V/eowGWquSq6avMJHH0YdrU5BIis3GEkDjeg/vlxy+2KeGX7GnLdnyXpx7TmqFStsMPpTjK/H8HxgUqop2ZFWF1BriVahMUfinA7hPhI9Wf" // ה-Session Token
 });
 let isProfilePicUploaded = false;
 let isGalleryUploaded = false;
 const dynamoDB = new AWS.DynamoDB.DocumentClient();
 const s3 = new AWS.S3();
-const bucketName = "chefs-images"; // שם הדלי שלך
+const bucketName = "chefs-images"; 
 const idToken = localStorage.getItem('id_token');
 const payload = JSON.parse(atob(idToken.split('.')[1]));
       console.log('User Info:', payload);
@@ -102,11 +102,11 @@ async function createChefProfile() {
 
   // נתונים שיוכנסו לטבלה
   const item = {
-    TableName: "ChefsTable", // שם הטבלה שלך
+    TableName: "ChefsTable", 
     Item: {
       Email: EmailUser,
       Category: categories,
-      Date: Date.now().toString(), // מזהה ייחודי
+      Date: Date.now().toString(), 
       Description: description,
       Gallery: galleryUrls,
       Name: name,

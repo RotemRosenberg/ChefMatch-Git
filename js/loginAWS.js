@@ -1,4 +1,3 @@
-// Replace these values with your actual AWS Cognito configuration
 const cognitoConfig = {
   UserPoolId: 'us-east-1_yuC0jnKMw',
   ClientId: '4ofh2h8iu02lk34rq1l8brl9mf',

@@ -76,10 +76,10 @@ document
   });
 
 function sendRequest(userEmail) {
-  // API endpoint (replace with your actual API Gateway URL)
+  // API endpoint 
   const apiUrl ="https://gcyu5g0u93.execute-api.us-east-1.amazonaws.com/prod/chef-request";
   const requestData = {
-    email: userEmail, // Replace with the logged-in user's email
+    email: userEmail, 
     oldGroup: "SimpleUser",
     newGroup: "ChefUser",
   };

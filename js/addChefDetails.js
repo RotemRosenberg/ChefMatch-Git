@@ -119,7 +119,7 @@ console.log(item);
     await dynamoDB.put(item).promise();
     console.log("Chef profile added to DynamoDB:", item.Item);
     alert("Chef profile created successfully!");
-    window.location.href = "chefDetails.html";
+    window.location.href = "chefs.html";
   } catch (err) {
     console.error("Error adding chef profile to DynamoDB:", err);
     alert("Failed to create chef profile.");

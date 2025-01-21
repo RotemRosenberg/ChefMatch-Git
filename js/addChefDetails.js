@@ -1,9 +1,9 @@
-// הגדרות AWS
+// הגדרות AWS כל פעם בפתחית מעבדה צריך לשנות בהתאם את הנתונים
  AWS.config.update({
   region: "us-east-1", 
-  accessKeyId: "ASIA3JTXKMHAVW5PNRYZ", 
-  secretAccessKey: "mTAkdFojibmoMK7HDU3H5764N6WyUYyCzlYjnlN4",
-  sessionToken: "IQoJb3JpZ2luX2VjEMX//////////wEaCXVzLXdlc3QtMiJHMEUCIGAnBc6gILOONWQJnILTFDVAoZJR2oprMDvR0xHRe/11AiEA3DvdN3rXC7L2TC1C2s+fee6kckx6cFOU43H/Id+HdRMqsgIIvv//////////ARABGgw3NzY1NjU1ODAyMjUiDKmh8SR4hMGdMr7AcyqGAlfKmmWYNqKzYiELMp0RfsMUEBkgzojUwObz/FO47M+pdnOJIhOYgYBxkf06Vjy75oEnNAinGKpgSYRP07V/vRuKncpT/kh1vVUVrYCYFi5Y2q/Y0WAVMaix+XUisMJJIUIisXGNW1e+lMpHpd0k/pwcxiI7VvjOvC9kanwUtI6UZWq94guQDwnp0VEmd4di92CrkxdyC/gG5duKaoF4VJegYVGqXyQIgBfC5X+cZQz2oKnNY3f0S/vAGTcq3CA42jmwbSqDyhLqHyyvSQh4B2M6JIeyzdLJuczHuHgKfO+PymNLYJKkSOmrfJ+DPizI8OaD9ZQt/zXfhIcL3aY4xfS7Tdl80ecw07W+vAY6nQFBxfrW6SNUkci+SnnGl3Q7wiPCJfmQH8s8IwH0CnOZrB+JFiuzy8txrGGU2S71FmNsw+32AuOCane/MrV/iQXcI48S5sQ4lsItoOWX9pin3qpQMbHCBAWaprKXVScClM2EWwzID7eny8uu7RF6MjUMW1Z0Y4NZbMpib3GvFsFXvXqWCVCdj5JbipZSQc0a1lVub1FIxkFW8oWbbKFo" // ה-Session Token
+  accessKeyId: "", 
+  secretAccessKey: "",
+  sessionToken: "" // ה-Session Token
 });
 let isProfilePicUploaded = false;
 let isGalleryUploaded = false;

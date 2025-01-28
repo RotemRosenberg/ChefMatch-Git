@@ -4,7 +4,7 @@ const cognitoConfig = {
   Domain: 'us-east-1yuc0jnkmw',
   ClientSecret: '5gcpn05nbgv2u15qbcg5e4acnsvvutgi3hf1t85ijk6i7pr3744',
   Region: 'us-east-1',
-  redirectUri: 'https://chefmatch-project-files.s3-website-us-east-1.amazonaws.com/index.html'
+  redirectUri: 'https://chefmatch-project-files.s3.us-east-1.amazonaws.com/index.html'
 };
 
 $(document).ready(function() {

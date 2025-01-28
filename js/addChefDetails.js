@@ -1,9 +1,9 @@
 // הגדרות AWS כל פעם בפתחית מעבדה צריך לשנות בהתאם את הנתונים
  AWS.config.update({
   region: "us-east-1", 
-  accessKeyId: "ASIA3JTXKMHAVW5PNRYZ", 
-  secretAccessKey: "mTAkdFojibmoMK7HDU3H5764N6WyUYyCzlYjnlN4",
-  sessionToken: "IQoJb3JpZ2luX2VjEMX//////////wEaCXVzLXdlc3QtMiJHMEUCIGAnBc6gILOONWQJnILTFDVAoZJR2oprMDvR0xHRe/11AiEA3DvdN3rXC7L2TC1C2s+fee6kckx6cFOU43H/Id+HdRMqsgIIvv//////////ARABGgw3NzY1NjU1ODAyMjUiDKmh8SR4hMGdMr7AcyqGAlfKmmWYNqKzYiELMp0RfsMUEBkgzojUwObz/FO47M+pdnOJIhOYgYBxkf06Vjy75oEnNAinGKpgSYRP07V/vRuKncpT/kh1vVUVrYCYFi5Y2q/Y0WAVMaix+XUisMJJIUIisXGNW1e+lMpHpd0k/pwcxiI7VvjOvC9kanwUtI6UZWq94guQDwnp0VEmd4di92CrkxdyC/gG5duKaoF4VJegYVGqXyQIgBfC5X+cZQz2oKnNY3f0S/vAGTcq3CA42jmwbSqDyhLqHyyvSQh4B2M6JIeyzdLJuczHuHgKfO+PymNLYJKkSOmrfJ+DPizI8OaD9ZQt/zXfhIcL3aY4xfS7Tdl80ecw07W+vAY6nQFBxfrW6SNUkci+SnnGl3Q7wiPCJfmQH8s8IwH0CnOZrB+JFiuzy8txrGGU2S71FmNsw+32AuOCane/MrV/iQXcI48S5sQ4lsItoOWX9pin3qpQMbHCBAWaprKXVScClM2EWwzID7eny8uu7RF6MjUMW1Z0Y4NZbMpib3GvFsFXvXqWCVCdj5JbipZSQc0a1lVub1FIxkFW8oWbbKFo" // ה-Session Token
+  accessKeyId: "ASIA3JTXKMHAYQUIPOST", 
+  secretAccessKey: "8j3Pp3ReJyFk02AeUbU9umaFOvNcxa8PI1Lihj61",
+  sessionToken: "IQoJb3JpZ2luX2VjEGkaCXVzLXdlc3QtMiJHMEUCIQCT2Kot/coNQg5JLHisfDbG40UBkCxjPN362EtgDDxFlwIgWWKeKsre166b7/jArPwFFkaVXdECFN0W9j02EA16xW8qqQIIchABGgw3NzY1NjU1ODAyMjUiDPipQXc+ijl1BiFnMyqGAiGQWX2jE1KA7nj4x4697RVkv5OdtON3WmZ9uiACwFVRkHYQZV+Lc5emeYIAHMF5rHbZSMqIVV+WPsPQI7/dX1mxMuunzFK1JKEfHyuYRk/GeUQXTCHxu7Yi5oCL3iiqoBR6CHRSnAbj7OreG5HWjRjuiqu8wDyMJFhM8nyI7l5C+kx4n4/unrIFvUYiKH+/QRjZ2tRruK4bey79P2/u/NI+GsG7p64PtSN7Xu/CKfmyth2EZM67p9+G5Xh+YHaBjbGU7Ote1k03uhoD8H3PDvSpZj+S1AcPpgiQdRoWrT3P3EZGG+6Rrpo0EuD92DDY1gX3cfVI9uKbBukRhWB8cp/Xr/SK5YIw1b3ivAY6nQG+9QRs5LRxNo0vLd6JfNAro4Ki+kH+jRkuccxyLAhwu8EB9Hssd+i9CNbw6Nfhkt3/SiWRcoQ+3u9WNUCbiyjiDgAvMmzlxx+3fC1HUqiFKjKr4nKm/unMAUM0Jla3OhGTRTEq63kHZR/Ghvt3KZyjv3ihhpUtBhF73k4cxcZTWeKoW3QMblc5fOKuyB1/kW+EQmRBSyk4XEagBvId" // ה-Session Token
 });
 let isProfilePicUploaded = false;
 let isGalleryUploaded = false;

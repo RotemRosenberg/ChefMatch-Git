@@ -72,8 +72,12 @@ async function exchangeCodeForTokens(code) {
           console.error('No ID token received');
       }
   } catch (error) {
-      console.error('Error exchanging code for tokens:', error);
-      alert('Failed to sign in. Please try again.');
+      console.error('Error exchanging code for tokens:', error);     
+       Swal.fire({
+        title: "Error!",
+        text: "Failed to sign in. Please try again.",
+        icon: "error"
+      });
   }
 }
 
@@ -88,7 +92,11 @@ function displayUserInfo(idToken) {
       updateAuthUI(username,userGroup);
   } catch (error) {
       console.error('Error displaying user info:', error);
-      alert('Error displaying user information');
+      Swal.fire({
+        title: "Error!",
+        text: "Error displaying user information",
+        icon: "error"
+      });
   }
 }
 

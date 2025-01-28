@@ -22,7 +22,7 @@ async function uploadProfilePic() {
   const file = fileInput.files[0];
 
   if (!file) {
-    alert("Please choose a profile picture.");
+    Swal.fire("Please choose a profile picture.!");
     return null;
   }
 
@@ -41,7 +41,11 @@ async function uploadProfilePic() {
     return data.Location; // URL של התמונה
   } catch (err) {
     console.error("Error uploading profile picture:", err);
-    alert("Failed to upload profile picture.");
+    Swal.fire({
+      title: "Error!",
+      text: "Failed to upload profile picture.",
+      icon: "error"
+    });
     return null;
   }
 }
@@ -65,7 +69,11 @@ async function uploadGalleryImages() {
       urls.push(data.Location); // URL של התמונה
     } catch (err) {
       console.error("Error uploading gallery image:", err);
-      alert(`Failed to upload gallery image: ${file.name}`);
+      Swal.fire({
+        title: "Error!",
+        text: "Failed to upload gallery image. ",
+        icon: "error"
+      });
     }
   }
   if (urls.length > 0) {
@@ -96,7 +104,11 @@ async function createChefProfile() {
   const galleryUrls = await uploadGalleryImages();
 
   if (!profilePicUrl) {
-    alert("Profile picture upload failed. Cannot create profile.");
+    Swal.fire({
+      title: "Error!",
+      text: "Failed to upload profile image. ",
+      icon: "error"
+    });
     return;
   }
 
@@ -118,11 +130,19 @@ console.log(item);
   try {
     await dynamoDB.put(item).promise();
     console.log("Chef profile added to DynamoDB:", item.Item);
-    alert("Chef profile created successfully!");
+    Swal.fire({
+      title: "Work!",
+      text: "Chef profile created successfully!",
+      icon: "success"
+    });
     window.location.href = "chefs.html";
   } catch (err) {
     console.error("Error adding chef profile to DynamoDB:", err);
-    alert("Failed to create chef profile.");
+    Swal.fire({
+      title: "Error!",
+      text: "Failed to create chef profile. ",
+      icon: "error"
+    });
   }
 }
 // עדכון מצב כפתור "Create Profile"

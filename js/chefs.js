@@ -27,7 +27,7 @@ async function searchChefs() {
   const searchType = document.getElementById("searchType").value;
   const searchInput = document.getElementById("searchInput").value.trim();
   if (!searchInput) {
-    alert("Please enter a value to search!");
+    Swal.fire("Please enter a value to search!");
     return;
   }
 
@@ -51,11 +51,19 @@ async function searchChefs() {
     if (Array.isArray(chefs) && chefs.length > 0) {
       renderChefs(chefs); // Render the searched chefs
     } else {
-      alert("No chefs found matching your search criteria.");
+      Swal.fire({
+        title: "Error!",
+        text: "No chefs found matching your search criteria.",
+        icon: "error"
+      });
     }
   } catch (error) {
     console.error("Failed to search chefs:", error);
-    alert("An error occurred while searching for chefs.");
+    Swal.fire({
+      title: "Error!",
+      text: "An error occurred while searching for chefs.",
+      icon: "error"
+    });
   }
 }
 
@@ -115,7 +123,11 @@ function VoiceToText() {
     window.msSpeechRecognition)();
 
   if (!recognition) {
-    alert("Speech recognition is not supported in your browser.");
+    Swal.fire({
+      title: "Error!",
+      text: "Speech recognition is not supported in your browser.",
+      icon: "error"
+    });
     return;
   }
 
@@ -141,7 +153,11 @@ function VoiceToText() {
   // Handle errors
   recognition.onerror = (event) => {
     console.error("Speech Recognition Error:", event.error);
-    alert("Speech recognition error. Please try again.");
+    Swal.fire({
+      title: "Error!",
+      text: "Speech recognition error. Please try again.",
+      icon: "error"
+    });
   };
 
   // Start speech recognition when the button is clicked

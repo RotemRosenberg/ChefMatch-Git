@@ -25,7 +25,11 @@ $(document).ready(function () {
     // Check if the user is logged in
     const idToken = localStorage.getItem("id_token");
     if (!idToken) {
-      alert("You must be logged in to send an email.");
+      Swal.fire({
+        title: "Error!",
+        text: "You must be logged in to send an email.",
+        icon: "error"
+      });
       return;
     }
 
@@ -36,7 +40,8 @@ $(document).ready(function () {
 
     // Validate the form inputs
     if (!chefEmail || !message || !userName || !bookingDate) {
-      alert("Please fill in all fields before sending.");
+      Swal.fire("Please fill in all fields before sending.");
+
       return;
     }
 
@@ -62,17 +67,29 @@ $(document).ready(function () {
       });
 
       if (response.ok) {
-        alert("Message sent successfully!");
+        Swal.fire({
+          title: "Work!",
+          text: "Message sent successfully!",
+          icon: "success"
+        });
         // Clear the form inputs
         emailForm.reset();
       } else {
         const errorData = await response.json();
         console.error("Error sending email:", errorData);
-        alert("Failed to send the message. Please try again.");
+        Swal.fire({
+          title: "Error!",
+          text: "Failed to send the message. Please try again.",
+          icon: "error"
+        });
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("An unexpected error occurred. Please try again later.");
+      Swal.fire({
+        title: "Error!",
+        text: "An unexpected error occurred. Please try again later.",
+        icon: "error"
+      });
     }
   });
 });

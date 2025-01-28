@@ -7,7 +7,12 @@ document
     const token = localStorage.getItem("id_token");
 
     if (!token) {
-      alert("User not authenticated!");
+      Swal.fire({
+        title: "Not Logged In",
+        text: "Please log in to continue.",
+        icon: "warning",
+        confirmButtonText: "OK"
+      });
       return;
     }
 
@@ -19,7 +24,7 @@ document
         : null;
 
       if (userGroup && userGroup !== "SimpleUser") {
-        alert("You are already a chef!");
+        Swal.fire("You are already a chef!");
         return;
       }
 
@@ -48,10 +53,19 @@ document
 
           // Check the returned data and handle accordingly
           if (statusCode === "1") {
-            alert("Your request is pending approval.");
-          } else if (statusCode === "2") {
-            alert("Your previous request was rejected.");
-          } else {
+
+  Swal.fire({
+    title: "Pending Approval",
+    text: "Your request is pending approval.",
+    icon: "info",
+    confirmButtonText: "OK"
+  });          } else if (statusCode === "2") {
+    Swal.fire({
+      title: "Request Rejected",
+      text: "Your previous request was rejected.",
+      icon: "error",
+      confirmButtonText: "OK"
+    });          } else {
             sendRequest(userEmail);
           }
         })
@@ -60,19 +74,34 @@ document
           console.error("Error:", error);
 
           if (error.message.includes("Failed to fetch")) {
-            alert(
-              "Failed to connect to the server. Please check your internet connection or try again later."
-            );
+            Swal.fire({
+              title: "Connection Error",
+              text: "Failed to connect to the server. Please check your internet connection or try again later.",
+              icon: "warning",
+              confirmButtonText: "OK"
+            });
           } else if (error.message.includes("500")) {
-            alert("Server error. Please try again later.");
-          } else {
-            alert("An unexpected error occurred. Please try again.");
-          }
+            Swal.fire({
+              title: "Server Error",
+              text: "An internal server error occurred. Please try again later.",
+              icon: "error",
+              confirmButtonText: "OK"
+            });          } else {
+              Swal.fire({
+                title: "Unexpected Error",
+                text: "An unexpected error occurred. Please try again.",
+                icon: "error",
+                confirmButtonText: "OK"
+              });          }
         });
     } catch (error) {
       console.error("Error:", error);
-      alert("Failed to communicate with the server. Please try again.");
-    }
+      Swal.fire({
+        title: "Server Communication Failed",
+        text: "Failed to communicate with the server. Please try again.",
+        icon: "error",
+        confirmButtonText: "OK"
+      });    }
   });
 
 function sendRequest(userEmail) {
@@ -100,12 +129,20 @@ function sendRequest(userEmail) {
     })
     .then((data) => {
       // Handle the success response
-      alert("Request sent successfully!");
-      console.log(data);
+      Swal.fire({
+        title: "Success!",
+        text: "Request sent successfully!",
+        icon: "success",
+        confirmButtonText: "OK"
+      });      console.log(data);
     })
     .catch((error) => {
       // Handle errors
       console.error("Error:", error);
-      alert("You have already submitted a request.");
-    });
+      Swal.fire({
+        title: "Request Already Submitted",
+        text: "You have already submitted a request.",
+        icon: "warning",
+        confirmButtonText: "OK"
+      });    });
 }

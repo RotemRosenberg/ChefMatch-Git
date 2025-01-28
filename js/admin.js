@@ -107,13 +107,21 @@ fetch(apiUrl, {
 })
 .then(data => {
     // Handle the success response
-    alert("Request processed successfully!");
+    Swal.fire({
+      title: "Work!",
+      text: "Request processed successfully!",
+      icon: "success"
+    });
     console.log(data);
     window.location.reload();
 })
 .catch(error => {
     // Handle errors
     console.error("Error:", error);
-    alert("Failed to process the request.");
+    Swal.fire({
+      title: "Error!",
+      text: "Failed to process the request. ",
+      icon: "error"
+    });
 });   
 }
